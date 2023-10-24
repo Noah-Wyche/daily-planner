@@ -12,12 +12,12 @@ This application is quite simple and very intuitive. At the top of the page you 
 
 ## Authors
 
-The original code comes from github user: @Xandromus
+The original code comes from github user: @Xandromus<br>
 All of the JavaScript functionality and additional styling and html content was written by me!
 
 ## Contact
 
-email: noahwyche1@gmail.com
+email: noahwyche1@gmail.com<br>
 github: Noah-Wyche
 
 Thanks!
