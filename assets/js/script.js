@@ -5,18 +5,27 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+    // Displays current date and time at the top of the page
     const currentDay = dayjs()
-    $('#currentDay').text(currentDay.format('MMM D, YYYY, h:mm'));
-    // TODO: Add a listener for click events on the save button. This code should
-    // use the id in the containing time-block as a key to save the user input in
-    // local storage. HINT: What does `this` reference in the click listener
-    // function? How can DOM traversal be used to get the "hour-x" id of the
-    // time-block containing the button that was clicked? How might the id be
-    // useful when saving the description in local storage?
+    $('#currentDay').text(currentDay.format('MMM D, YYYY, h:mm')); // Format for the date can be altered to suit my needs
+   
     $(".saveBtn").on("click", function() {
-        ;
-    })
+        // Find the associated time-block ID
+        const timeBlockID = $(this).closest(".time-block").attr("id");
+        // Get the user's input for this time-block
+        const userInput = $(this).siblings(".description").val();
+        // Save the input to local storage with the time-block ID as the key
+        localStorage.setItem(timeBlockID, userInput);
+    });
 
+    // To display the users inputs in each time-block with saved text
+    $(".time-block").each(function() {
+        const timeBlockID = $(this).attr("id");
+        const storedInput = localStorage.getItem(timeBlockID);
+        if (storedInput) {
+            $(this).find(".description").val(storedInput);
+        }
+    });
     // TODO: Add code to apply the past, present, or future class to each time
     // block by comparing the id to the current hour. HINTS: How can the id
     // attribute of each time-block be used to conditionally add or remove the
